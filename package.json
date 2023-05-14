@@ -1,0 +1,21 @@
+{
+  "name": "otus-project",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.2.75:5353/kron-tm/kron.tm.frontend.web.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.2",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.5"
+  }
+}
