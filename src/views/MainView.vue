@@ -49,23 +49,24 @@
 <script setup>
 import CardProduct from "../components/CardProduct.vue";
 import Dialog from "../components/Dialog.vue";
-import axios from "axios";
+import axios from "../mixin/axios.js";
 import { ref, onMounted } from "vue";
-import { useField, useForm, Field, Form, ErrorMessage } from "vee-validate";
+import { Field, Form, ErrorMessage } from "vee-validate";
+
+const API_URL_STORE = "https://fakestoreapi.com/",
+  API_URL_BIN = "http://httpbin.org/";
 
 const products = ref([]);
 const order = ref({});
 const isShowDialog = ref(false);
 const isShowConfirm = ref(false);
 const surname = ref();
+const { getData, postData } = axios;
 
-onMounted(() => getProducts());
+onMounted(() => {
+  getData(`${API_URL_STORE}products`, {}).then((res) => (products.value = res));
+});
 
-function getProducts() {
-  return axios.get("https://fakestoreapi.com/products", {}).then((res) => {
-    products.value = res.data;
-  });
-}
 function hideDialog() {
   //
 }
@@ -73,7 +74,7 @@ function clearForm() {
   order.value = {};
 }
 function submitForm() {
-  return axios.post(" http://httpbin.org/post", order.value).then((res) => {
+  postData(`${API_URL_BIN}post`, order.value, {}).then(() => {
     isShowDialog.value = false;
     isShowConfirm.value = true;
     clearForm();
