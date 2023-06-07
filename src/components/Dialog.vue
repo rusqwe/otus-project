@@ -25,19 +25,18 @@ function onClose() {
 </script>
 <style scoped>
 .modal {
-  display: none; /* Скрыто по умолчанию */
+  display: none; 
   position: fixed;
-  z-index: 1; /* Сидеть на вершине */
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Полная ширина */
-  height: 100%; /* Полная высота */
-  overflow: auto; /* Включите прокрутку, если это необходимо */
-  background-color: rgb(0, 0, 0); /* Цвет запасной вариант */
-  background-color: rgba(0, 0, 0, 0.4); /* Черный с непрозрачностью */
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); 
 }
 
-/* Модальное содержание/коробка */
 .modal-content {
   position: absolute;
   width: 350px;
