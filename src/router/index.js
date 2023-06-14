@@ -1,15 +1,56 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainView from '../views/MainView.vue'
+import Products from '../views/Products.vue'
+import Basket from '../views/Basket.vue'
+import Login from '../views/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: MainView
+      path: '/products',
+      name: 'products',
+      meta: {
+        layout: "main",
+        requiresAuth: true
+      },
+      component: Products
+    },
+    {
+      path: '/basket',
+      name: 'basket',
+      meta: {
+        layout: "main",
+        requiresAuth: true
+      },
+      component: Basket
+    },
+    {
+      path: '/login',
+      name: 'login',
+      meta: {
+        layout: "empty",
+        requiresAuth: false
+      },
+      component: Login
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
+router.beforeEach(
+  (to, from, next) => {
+    if (to?.meta?.requiresAuth && !sessionStorage.session) {
+      const query = to.fullPath.match(/^\/$/) ? {} : { redirect: to.fullPath }
+      next({
+        path: '/login',
+        query: query
+      })
+      return
+
+    }
+    next()
+  }
+)
 export default router

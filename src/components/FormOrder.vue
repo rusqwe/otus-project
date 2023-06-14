@@ -83,7 +83,4 @@ form .row {
   flex-direction: column;
   padding-bottom: 4px;
 }
-.error {
-  color: red;
-}
 </style>
