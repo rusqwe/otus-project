@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Products from '../views/Products.vue'
+import Product from '../views/Product.vue'
 import Basket from '../views/Basket.vue'
 import Login from '../views/Login.vue'
 
@@ -14,6 +15,15 @@ const router = createRouter({
         requiresAuth: true
       },
       component: Products
+    },
+    {
+      path: '/products/:id',
+      name: 'product',
+      meta: {
+        layout: "main",
+        requiresAuth: true
+      },
+      component: Product
     },
     {
       path: '/basket',

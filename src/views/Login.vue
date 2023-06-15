@@ -43,7 +43,7 @@ const router = useRouter();
 
 function submitForm(form) {
   sessionStorage.setItem("session", true);
-  router.push({ name: "main" });
+  router.push({ name: "products" });
 }
 
 function validateText(value) {
