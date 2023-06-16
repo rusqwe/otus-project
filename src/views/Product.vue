@@ -2,7 +2,7 @@
   <div v-if="product">
     <CardProduct :product="product">
       <template v-slot:footer>
-        <!--<button @click="addProduct(item)">Добавить</button>-->
+        <!--<button @click="tore.commit('ADD_CART', value)">Добавить</button>-->
       </template>
     </CardProduct>
   </div>
@@ -30,9 +30,7 @@ onMounted(() => {
     product.value = res;
   });
 });
-function addProduct(value) {
-  store.commit("ADD_PRODUCT", value);
-}
+
 </script>
 <style scoped>
 .item {

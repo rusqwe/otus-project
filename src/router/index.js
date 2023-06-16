@@ -10,6 +10,7 @@ const router = createRouter({
     {
       path: '/products',
       name: 'products',
+      alias: '/',
       meta: {
         layout: "main",
         requiresAuth: true

@@ -9,20 +9,20 @@
       Сделать заказ
     </button>
     <label v-show="isShowConfirm">Форма успешно отправлена</label>
-    <div v-for="item of store.getters.products" :key="item.id" class="item">
+    <div v-for="item of store.getters.carts" :key="item.id" class="item">
       <CardProduct :product="item">
         <template v-slot:footer>
-          <button class="button-counter" @click="store.commit('DELETE_PRODUCT', item)">
+          <button class="button-counter" @click="store.commit('DELETE_CART', item)">
             -
           </button>
           <label class="label-counter">{{ item.count }}</label>
-          <button class="button-counter" @click="store.commit('ADD_PRODUCT', item)">
+          <button class="button-counter" @click="store.commit('ADD_CART', item)">
             +
           </button>
         </template>
       </CardProduct>
     </div>
-    <button class="button-clear" @click="store.commit('CLEAR_PRODUCTS')">
+    <button class="button-clear" @click="store.commit('CLEAR_CARTS')">
       Очистить козину
     </button>
     <Dialog v-model="isShowDialog" @hide="hideDialog">

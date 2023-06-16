@@ -1,15 +1,26 @@
 <template>
-  <div>
-    <div class="topnav">
-      <router-link class="item" :to="{ name: 'products' }">Товары</router-link>
-      <router-link class="item" :to="{ name: 'basket' }">Корзина</router-link>
+  <div class="topnav">
+    <router-link class="item" :to="{ name: 'products' }">Товары</router-link>
+    <router-link class="item" :to="{ name: 'basket' }">Корзина</router-link>
+    <div class="item-right">
+      {{ store.getters.user.login }} |
+      <label style="cursor: pointer" @click="logout">Выход</label>
     </div>
-    <slot name="content"></slot>
   </div>
+  <slot name="content"></slot>
 </template>
 
 <script setup>
-import { RouterLink } from "vue-router";
+import { useRouter, RouterLink } from "vue-router";
+import { useStore } from "vuex";
+
+const store = useStore();
+const router = useRouter();
+
+function logout() {
+  store.dispatch("logout");
+  router.push({ name: "login" });
+}
 </script>
 <style scope>
 .topnav {
@@ -25,7 +36,14 @@ import { RouterLink } from "vue-router";
   text-decoration: none;
   font-size: 17px;
 }
-
+.topnav .item-right {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 .topnav a:hover {
   background-color: #8f8888;
   color: black;

@@ -2,16 +2,16 @@
   <Form @submit="submitForm">
     <div class="container">
       <br />
-      <label for="uname"><b>Логин</b></label>
+      <label for="login"><b>Логин</b></label>
       <Field
-        name="uname"
+        name="login"
         placeholder="Enter Username"
         :rules="validateText"
-        v-model="data.uname"
+        v-model="data.login"
         class="text"
       />
 
-      <ErrorMessage class="error" name="uname" />
+      <ErrorMessage class="error" name="login" />
       <br /><label for="password"><b>Пароль</b></label>
       <Field
         name="password"
@@ -33,19 +33,24 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+
+const store = useStore();
 
 const data = ref({});
 
 const router = useRouter();
 
+//data.login = store.getters.user
 function submitForm(form) {
   sessionStorage.setItem("session", true);
   router.push({ name: "products" });
+  store.commit("SET_USER", { login: data.value.login });
 }
-
+onMounted(() => (data.value.login = store.getters.user.login));
 function validateText(value) {
   if (!value) {
     return "Поле обязательно для заполнения";
@@ -69,7 +74,6 @@ form {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 
 img.avatar {
   width: 40%;

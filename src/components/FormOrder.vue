@@ -34,19 +34,36 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
+import { useStore } from "vuex";
 
 const order = ref({});
+
 const props = defineProps(["submitForm"]);
+
 const formOrder = ref(null);
 
+const store = useStore();
+
+onMounted(() => {
+  order.value = { ...store.getters.user };
+});
 function clearForm() {
   order.value = {};
   formOrder.value.resetForm();
 }
 function submitForm() {
-  props.submitForm(order.value).then(() => clearForm());
+  props.submitForm(order.value).then(() => {
+    store.commit("SET_USER", {
+      lastName: order.value.lastName,
+      firstName: order.value.firstName,
+      surname: order.value.surname,
+      address: order.value.address,
+    });
+    store.commit("CLEAR_CARTS");
+    clearForm();
+  });
 }
 function validateText(value) {
   if (!value) {
