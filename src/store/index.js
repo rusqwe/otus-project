@@ -1,13 +1,11 @@
 import { createStore } from 'vuex'
-
-import axios from "../mixin/axios.js";
-const API_URL_STORE = "https://fakestoreapi.com/",
-  API_URL_BIN = "http://httpbin.org/";
-const { getData, postData } = axios;
+import product from "./product.js";
 
 export default createStore({
+  modules: {
+    product
+  },
   state: {
-    products: [],
     carts: [],
     user: {
       login: null,
@@ -15,6 +13,7 @@ export default createStore({
       firstName: null,
       surname: null,
       address: null,
+      isAdmin: false
     }
   },
   mutations: {
@@ -38,34 +37,23 @@ export default createStore({
     CLEAR_CARTS: (state) => {
       state.carts = [];
     },
-    SET_PRODUCTS: (state, val) => {
-      state.products = val;
-    },
     SET_USER: (state, { login, lastName, firstName, surname, address }) => {
       state.user = {
         login: login || state.user.login,
         lastName: lastName || state.user.lastName,
         firstName: firstName || state.user.firstName,
         surname: surname || state.user.surname,
-        address: address || state.user.address
+        address: address || state.user.address,
+        isAdmin: (Math.random() < 0.5)
       };
     },
   },
   actions: {
-    getProducts({ commit }) {
-      return getData(`${API_URL_STORE}products`, {}).then(
-        (res) => {
-          const products = res.map((item) => ({ ...item, count: 1 }))
-          commit("SET_PRODUCTS", products)
-        }
-      );
-    },
     logout() {
-      sessionStorage.session = false;
+      sessionStorage.removeItem('session');
     }
   },
   getters: {
-    products: s => s.products,
     carts: s => s.carts,
     user: s => s.user,
   },

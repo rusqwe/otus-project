@@ -2,7 +2,7 @@
   <div v-if="product">
     <CardProduct :product="product">
       <template v-slot:footer>
-        <!--<button @click="tore.commit('ADD_CART', value)">Добавить</button>-->
+        <!--<button @click="store.commit('ADD_CART', value)">Добавить</button>-->
       </template>
     </CardProduct>
   </div>

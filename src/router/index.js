@@ -60,6 +60,11 @@ router.beforeEach(
       })
       return
 
+    } else if (to.name === 'login' && sessionStorage.session) {
+      next({
+        path: '/'
+      })
+      return
     }
     next()
   }
