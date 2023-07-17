@@ -41,9 +41,6 @@ const router = useRouter();
 const isShowDialog = ref(false);
 
 function submitForm(product) {
-  /*   return postData(`${API_URL_BIN}post`, order, {}).then(() => {
-    isShowDialog.value = false;
-  }); */
   return store.dispatch("addProduct", product).then(() => (isShowDialog.value = false));
 }
 onMounted(() => {

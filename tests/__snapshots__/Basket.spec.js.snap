@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Basket view > mount without errors 1`] = `
+"<div data-v-9fbd96f9=\\"\\"><button data-v-9fbd96f9=\\"\\"> Перейти к оформлению </button>
+  <p data-v-9fbd96f9=\\"\\"><label data-v-9fbd96f9=\\"\\">Товаров на сумму:</label> <label data-v-9fbd96f9=\\"\\" class=\\"label-total\\">0.00</label></p><label data-v-9fbd96f9=\\"\\" style=\\"display: none;\\">Форма успешно отправлена</label>
+  <div data-v-9fbd96f9=\\"\\" class=\\"item\\">
+    <div data-v-d3eb8fbd=\\"\\" data-v-9fbd96f9=\\"\\" class=\\"product-item\\" data-testid=\\"product-1\\">
+      <div data-v-d3eb8fbd=\\"\\" class=\\"product-img\\"><img data-v-d3eb8fbd=\\"\\" src=\\"\\" height=\\"115\\"></div>
+      <div data-v-d3eb8fbd=\\"\\" class=\\"product-list\\">
+        <h3 data-v-d3eb8fbd=\\"\\"></h3><span data-v-d3eb8fbd=\\"\\" title=\\"\\"></span>
+      </div><span data-v-d3eb8fbd=\\"\\" class=\\"price\\">0.00$</span><button data-v-9fbd96f9=\\"\\" class=\\"button-counter\\"> - </button><label data-v-9fbd96f9=\\"\\" class=\\"label-counter\\">0</label><button data-v-9fbd96f9=\\"\\" class=\\"button-counter\\"> + </button>
+    </div>
+  </div>
+  <div data-v-9fbd96f9=\\"\\" class=\\"item\\">
+    <div data-v-d3eb8fbd=\\"\\" data-v-9fbd96f9=\\"\\" class=\\"product-item\\" data-testid=\\"product-2\\">
+      <div data-v-d3eb8fbd=\\"\\" class=\\"product-img\\"><img data-v-d3eb8fbd=\\"\\" src=\\"\\" height=\\"115\\"></div>
+      <div data-v-d3eb8fbd=\\"\\" class=\\"product-list\\">
+        <h3 data-v-d3eb8fbd=\\"\\"></h3><span data-v-d3eb8fbd=\\"\\" title=\\"\\"></span>
+      </div><span data-v-d3eb8fbd=\\"\\" class=\\"price\\">0.00$</span><button data-v-9fbd96f9=\\"\\" class=\\"button-counter\\"> - </button><label data-v-9fbd96f9=\\"\\" class=\\"label-counter\\">0</label><button data-v-9fbd96f9=\\"\\" class=\\"button-counter\\"> + </button>
+    </div>
+  </div><button data-v-9fbd96f9=\\"\\" class=\\"button-clear\\"> Очистить козину </button>
+  <div data-v-3cfe8e2e=\\"\\" data-v-9fbd96f9=\\"\\" id=\\"myModal\\" class=\\"modal\\" style=\\"display: none;\\">
+    <div data-v-3cfe8e2e=\\"\\" class=\\"modal-content\\">
+      <div data-v-3cfe8e2e=\\"\\" class=\\"header\\"> Заказ </div><span data-v-3cfe8e2e=\\"\\" class=\\"close\\">×</span>
+      <p data-v-3cfe8e2e=\\"\\">
+      <form data-v-bd32e9b7=\\"\\" data-v-9fbd96f9=\\"\\" novalidate=\\"\\">
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"lastName\\">Фамилия:</label><input data-v-bd32e9b7=\\"\\" name=\\"lastName\\">
+          <!---->
+        </div>
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"firstName\\">Имя:</label><input data-v-bd32e9b7=\\"\\" name=\\"firstName\\">
+          <!---->
+        </div>
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"surname\\">Отчество:</label><input data-v-bd32e9b7=\\"\\" type=\\"text\\" name=\\"surname\\"></div>
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"address\\">Адрес:</label><input data-v-bd32e9b7=\\"\\" name=\\"address\\">
+          <!---->
+        </div>
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"card\\">Номер карты:</label><input data-v-bd32e9b7=\\"\\" name=\\"card\\">
+          <!---->
+        </div>
+        <div data-v-bd32e9b7=\\"\\" class=\\"row\\"><label data-v-bd32e9b7=\\"\\" for=\\"expiry\\">Срок действия:</label><input data-v-bd32e9b7=\\"\\" name=\\"expiry\\">
+          <!---->
+        </div><input data-v-bd32e9b7=\\"\\" type=\\"submit\\">
+      </form>
+      </p>
+      <div data-v-3cfe8e2e=\\"\\" class=\\"footer\\"></div>
+    </div>
+  </div>
+</div>"
+`;

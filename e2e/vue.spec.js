@@ -1,0 +1,35 @@
+const { test, expect } = require('@playwright/test');
+
+test('test', async ({ page }) => {
+  await page.goto('http://127.0.0.1:5173/login');
+  await page.getByPlaceholder('Enter Username').click();
+  await page.getByPlaceholder('Enter Username').fill('Test');
+  await page.getByPlaceholder('Enter Password').click();
+  await page.getByPlaceholder('Enter Password').fill('Test');
+  await page.getByRole('button', { name: 'Авторизация' }).click();
+  await page.waitForTimeout(1 * 1000);
+  await page.locator('.product-item > button').first().click();
+  await page.locator('div:nth-child(3) > .product-item > button').click();
+  await page.getByRole('link', { name: 'Корзина' }).click();
+  await expect(page.getByTestId('product-1')).toBeVisible();
+  await page.getByTestId('product-1').getByRole('button', { name: '+' }).click();
+  await page.getByRole('button', { name: 'Очистить козину' }).click();
+  await expect(page.getByTestId('product-1')).not.toBeVisible();
+  await page.getByRole('link', { name: 'Товары' }).click();
+  await page.locator('div:nth-child(5) > .product-item > button').click();
+  await page.getByRole('link', { name: 'Корзина' }).click();
+  await page.getByRole('button', { name: 'Перейти к оформлению' }).click();
+  await page.locator('input[name="lastName"]').click();
+  await page.locator('input[name="lastName"]').fill('Test');
+  await page.locator('input[name="firstName"]').click();
+  await page.locator('input[name="firstName"]').fill('Test');
+  await page.locator('input[name="surname"]').click();
+  await page.locator('input[name="surname"]').fill('Test');
+  await page.locator('input[name="address"]').click();
+  await page.locator('input[name="address"]').fill('Test');
+  await page.locator('input[name="card"]').click();
+  await page.locator('input[name="card"]').fill('1111111111111111');
+  await page.locator('input[name="expiry"]').click();
+  await page.locator('input[name="expiry"]').fill('22/2023');
+  await page.getByRole('button', { name: 'Submit' }).click();
+});

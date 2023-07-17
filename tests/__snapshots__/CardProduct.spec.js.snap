@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CardProduct component > mount without errors 1`] = `
+"<div data-v-d3eb8fbd=\\"\\" class=\\"product-item\\">
+  <div data-v-d3eb8fbd=\\"\\" class=\\"product-img\\"><img data-v-d3eb8fbd=\\"\\" src=\\"\\" height=\\"115\\"></div>
+  <div data-v-d3eb8fbd=\\"\\" class=\\"product-list\\">
+    <h3 data-v-d3eb8fbd=\\"\\"></h3><span data-v-d3eb8fbd=\\"\\" title=\\"\\"></span>
+  </div><span data-v-d3eb8fbd=\\"\\" class=\\"price\\">31.98$</span>
+</div>"
+`;

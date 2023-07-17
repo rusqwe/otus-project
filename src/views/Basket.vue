@@ -6,11 +6,14 @@
         isShowConfirm = false;
       "
     >
-      Сделать заказ
+      Перейти к оформлению
     </button>
+    <p>
+      <label>Товаров на сумму:</label> <label class="label-total">{{ total }}</label>
+    </p>
     <label v-show="isShowConfirm">Форма успешно отправлена</label>
     <div v-for="item of store.getters.carts" :key="item.id" class="item">
-      <CardProduct :product="item">
+      <CardProduct :product="item" :data-testid="`product-${item.id}`">
         <template v-slot:footer>
           <button class="button-counter" @click="store.commit('DELETE_CART', item)">
             -
@@ -25,7 +28,7 @@
     <button class="button-clear" @click="store.commit('CLEAR_CARTS')">
       Очистить козину
     </button>
-    <Dialog v-model="isShowDialog" @hide="hideDialog">
+    <Dialog v-model="isShowDialog">
       <template v-slot:header> Заказ </template>
       <template v-slot:content>
         <FormOrder :submitForm="submitForm" />
@@ -40,7 +43,7 @@ import CardProduct from "../components/CardProduct.vue";
 import Dialog from "../components/Dialog.vue";
 import FormOrder from "../components/FormOrder.vue";
 import axios from "../mixin/axios.js";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 const API_URL_STORE = "https://fakestoreapi.com/",
@@ -55,6 +58,14 @@ const isShowConfirm = ref(false);
 const store = useStore();
 
 const { postData } = axios;
+
+const total = computed(() =>
+  store.getters.carts.length
+    ? store.getters.carts
+        .reduce((prev, curr) => prev + curr.count * curr.price, 0)
+        .toFixed(2)
+    : 0
+);
 
 function submitForm(order) {
   return postData(`${API_URL_BIN}post`, order, {}).then(() => {
@@ -78,5 +89,8 @@ function submitForm(order) {
 .label-counter {
   margin-right: 4px;
   margin-left: 4px;
+}
+.label-total {
+  font-weight: bold;
 }
 </style>
